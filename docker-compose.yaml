@@ -22,6 +22,8 @@ services:
       - roboshop
   redis:
     image: redis:6.2
+    networks:
+      - roboshop
   user:
     build:
       context: .
