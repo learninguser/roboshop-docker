@@ -1,7 +1,5 @@
 FROM maven AS build
 WORKDIR /app
-RUN useradd roboshop
-USER roboshop
 ADD ./shipping/ .
 RUN mvn dependency:resolve
 RUN mvn package
