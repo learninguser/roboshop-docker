@@ -1,4 +1,4 @@
-FROM maven
+FROM maven AS build
 WORKDIR /app
 RUN useradd roboshop
 USER roboshop
