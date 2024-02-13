@@ -42,6 +42,12 @@ services:
       dockerfile: ./mysql/Dockerfile
     image: mysql:v1
     container_name: mysql
+  shipping:
+    build:
+      context: .
+      dockerfile: ./shipping/Dockerfile
+    image: shipping:v1
+    container_name: shipping
   web:
     build:
       context: .
