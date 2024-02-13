@@ -36,6 +36,12 @@ services:
     depends_on:
       - catalogue
       - redis
+  mysql:
+    build:
+      context: .
+      dockerfile: ./mysql/Dockerfile
+    image: mysql:v1
+    container_name: mysql
   web:
     build:
       context: .
