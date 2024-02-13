@@ -8,38 +8,31 @@ services:
       dockerfile: ./mongodb/Dockerfile
     image: mongodb:v1
     container_name: mongodb
-    networks:
-      - roboshop
   catalogue:
     build:
       context: .
       dockerfile: ./catalogue/Dockerfile
     image: catalogue:v1
     container_name: catalogue
-    networks:
-      - roboshop
     depends_on:
       - mongodb
   redis:
     image: redis:6.2
-    networks:
-      - roboshop
   user:
     build:
       context: .
       dockerfile: ./user/Dockerfile
     image: user:v1
     container_name: user
-    networks:
-      - roboshop
     depends_on:
       - mongodb
       - redis
   web:
+    build:
+      context: .
+      dockerfile: ./web/Dockerfile
     image: web:v1
     container_name: web
-    networks:
-      - roboshop
     ports:
       - "80:80"
     depends_on:
