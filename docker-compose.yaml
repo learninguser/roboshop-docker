@@ -1,6 +1,4 @@
-networks:
-  roboshop:
-      driver: bridge
+version: "3.8"
 services:
   mongodb:
     build:
@@ -69,8 +67,8 @@ services:
     image: rabbitmq
     container_name: rabbitmq
     environment:
-    - RABBITMQ_DEFAULT_USER=roboshop
-    - RABBITMQ_DEFAULT_PASS=roboshop123
+      - RABBITMQ_DEFAULT_USER=roboshop
+      - RABBITMQ_DEFAULT_PASS=roboshop123
     networks:
       - roboshop
   payment:
@@ -101,3 +99,6 @@ services:
       - payment
     networks:
       - roboshop
+networks:
+  roboshop:
+    driver: bridge
