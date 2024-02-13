@@ -8,6 +8,8 @@ services:
       dockerfile: ./mongodb/Dockerfile
     image: mongodb:v1
     container_name: mongodb
+    networks:
+      - roboshop
   catalogue:
     build:
       context: .
@@ -16,6 +18,8 @@ services:
     container_name: catalogue
     depends_on:
       - mongodb
+    networks:
+      - roboshop
   redis:
     image: redis:6.2
   user:
@@ -27,6 +31,8 @@ services:
     depends_on:
       - mongodb
       - redis
+    networks:
+      - roboshop
   cart:
     build:
       context: .
@@ -36,12 +42,16 @@ services:
     depends_on:
       - catalogue
       - redis
+    networks:
+      - roboshop
   mysql:
     build:
       context: .
       dockerfile: ./mysql/Dockerfile
     image: mysql:v1
     container_name: mysql
+    networks:
+      - roboshop
   shipping:
     build:
       context: .
@@ -51,12 +61,16 @@ services:
     depends_on:
       - cart
       - mysql
+    networks:
+      - roboshop
   rabbitmq:
     image: rabbitmq
     container_name: rabbitmq
     environment:
     - RABBITMQ_DEFAULT_USER=roboshop
     - RABBITMQ_DEFAULT_PASS=roboshop123
+    networks:
+      - roboshop
   payment:
     build:
       context: .
@@ -67,6 +81,8 @@ services:
       - cart
       - user
       - rabbitmq
+    networks:
+      - roboshop
   web:
     build:
       context: .
@@ -81,3 +97,5 @@ services:
       - cart
       - shipping
       - payment
+    networks:
+      - roboshop
