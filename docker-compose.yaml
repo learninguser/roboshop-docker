@@ -48,6 +48,12 @@ services:
       dockerfile: ./shipping/Dockerfile
     image: shipping:v1
     container_name: shipping
+  rabbitmq:
+    image: rabbitmq
+    container_name: rabbitmq
+    environment:
+    - RABBITMQ_DEFAULT_USER=roboshop
+    - RABBITMQ_DEFAULT_PASS=roboshop123
   web:
     build:
       context: .
