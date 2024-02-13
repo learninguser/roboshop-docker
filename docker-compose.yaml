@@ -27,6 +27,15 @@ services:
     depends_on:
       - mongodb
       - redis
+  cart:
+    build:
+      context: .
+      dockerfile: ./cart/Dockerfile
+    image: cart:v1
+    container_name: cart
+    depends_on:
+      - catalogue
+      - redis
   web:
     build:
       context: .
