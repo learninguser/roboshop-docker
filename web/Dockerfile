@@ -1,4 +1,7 @@
 FROM nginx
 RUN rm -rf /usr/share/nginx/html/*
 ADD ./web/static /usr/share/nginx/html/
-COPY ./web/default.conf /etc/nginx/conf.d/default.conf
+RUN mkdir -p /etc/nginx/default.d/
+# COPY ./web/default.conf /etc/nginx/conf.d/default.conf
+COPY ./web/default.conf /etc/nginx/default.d/default.conf
+COPY ./web/nginx.conf /etc/nginx/nginx.conf
