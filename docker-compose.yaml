@@ -2,16 +2,16 @@ version: "3.8"
 services:
   mongodb:
     build:
-      context: .
-      dockerfile: ./mongodb/Dockerfile
+      context: ./mongodb
+      dockerfile: Dockerfile
     image: mongodb:v1
     container_name: mongodb
     networks:
       - roboshop
   catalogue:
     build:
-      context: .
-      dockerfile: ./catalogue/Dockerfile
+      context: ./catalogue
+      dockerfile: Dockerfile
     image: catalogue:v1
     container_name: catalogue
     depends_on:
@@ -25,8 +25,8 @@ services:
     container_name: redis
   user:
     build:
-      context: .
-      dockerfile: ./user/Dockerfile
+      context: ./user
+      dockerfile: Dockerfile
     image: user:v1
     container_name: user
     depends_on:
@@ -36,8 +36,8 @@ services:
       - roboshop
   cart:
     build:
-      context: .
-      dockerfile: ./cart/Dockerfile
+      context: ./cart
+      dockerfile: Dockerfile
     image: cart:v1
     container_name: cart
     depends_on:
@@ -47,16 +47,16 @@ services:
       - roboshop
   mysql:
     build:
-      context: .
-      dockerfile: ./mysql/Dockerfile
+      context: ./mysql
+      dockerfile: Dockerfile
     image: mysql:v1
     container_name: mysql
     networks:
       - roboshop
   shipping:
     build:
-      context: .
-      dockerfile: ./shipping/Dockerfile
+      context: ./shipping
+      dockerfile: Dockerfile
     image: shipping:v1
     container_name: shipping
     depends_on:
@@ -74,8 +74,8 @@ services:
       - roboshop
   payment:
     build:
-      context: .
-      dockerfile: ./payment/Dockerfile
+      context: ./payment
+      dockerfile: Dockerfile
     image: payment:v1
     container_name: payment
     depends_on:
@@ -86,8 +86,8 @@ services:
       - roboshop
   web:
     build:
-      context: .
-      dockerfile: ./web/Dockerfile
+      context: ./web
+      dockerfile: Dockerfile
     image: web:v1
     container_name: web
     ports:
