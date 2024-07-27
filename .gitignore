@@ -1,0 +1,5 @@
+# Discard Maven build
+target
+
+# VS Code
+settings.json
