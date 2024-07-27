@@ -1,6 +1,6 @@
 FROM maven AS build
 WORKDIR /app
-ADD ./shipping/ .
+ADD . .
 RUN mvn dependency:resolve
 RUN mvn package
 
